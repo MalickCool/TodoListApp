@@ -9,12 +9,12 @@ class Board extends Component {
         };
     }
 
-    close = e => {
+    close = () => {
         let { index } = this.props;
         this.props.removeItem(index);
     }
 
-    changeState = e => {
+    changeState = () => {
         let { index } = this.props;
         this.props.markAsDone(index);
     }

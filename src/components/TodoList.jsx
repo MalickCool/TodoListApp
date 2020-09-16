@@ -28,7 +28,7 @@ class TodoList extends Component {
         }
     }
 
-    addToList = e => {
+    addToList = () => {
         if(this.state.item) {
             var { todolist } = this.state;
             todolist.unshift( {
@@ -43,6 +43,12 @@ class TodoList extends Component {
             localStorage.setItem("todoList", JSON.stringify(todolist));
 
             this.textInput.current.focus();
+        }
+    }
+
+    addToListBykeyPress = e => {
+        if(e.key === 'Enter'){
+            this.addToList();
         }
     }
 
@@ -78,7 +84,7 @@ class TodoList extends Component {
                         <div className="form-group row">
                             <label htmlFor="item" className="col-md-12 control-label col-form-label text-left"><b>Entrez votre Tâche</b></label>
                             <div className="col-md-9 pt-3">
-                                <input ref={this.textInput} type="text" id="item" onChange={this.onChange} value={this.state.item} className='form-control'/>
+                                <input ref={this.textInput} type="text" id="item" onKeyPress={this.addToListBykeyPress} onChange={this.onChange} value={this.state.item} className='form-control'/>
                             </div>
                             <div className="col-md-3 pt-3">
                                 <button type="button" className="btn btn-success" onClick={this.addToList}>Valider</button>
