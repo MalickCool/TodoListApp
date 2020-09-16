@@ -18,11 +18,7 @@ class TodoList extends Component {
     }
 
     componentWillMount(){
-
-        
-
         if (localStorage.todoList) {
-
             let todolist = JSON.parse(localStorage.todoList);
             this.setState({ todolist: todolist })
         }
@@ -41,7 +37,6 @@ class TodoList extends Component {
             });
 
             localStorage.setItem("todoList", JSON.stringify(todolist));
-
             this.textInput.current.focus();
         }
     }
